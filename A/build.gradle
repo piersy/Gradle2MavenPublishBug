@@ -1,0 +1,9 @@
+apply plugin: 'java'
+dependencies {
+    /*
+    Depending on shared:domain here causes shared:domain to not have the
+    publishMavenJAvaPublicationToMavenLocal task ?????
+   */
+//    compile project(':shared:domain')
+   compile project(':C')
+}

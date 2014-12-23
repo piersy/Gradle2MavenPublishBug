@@ -1,0 +1,8 @@
+//rootProject.name = 'TestMavenPublishing'
+include 'A'
+include 'shared:domain'
+include 'shared:B'
+
+
+include 'C'
+

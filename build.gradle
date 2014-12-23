@@ -1,0 +1,59 @@
+//When run this will regenerate the gradle wrapper for this project
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.0'
+}
+
+//Configure basic stuff for projects with java type
+allprojects {
+    plugins.withType(JavaPlugin).whenPluginAdded {
+        sourceCompatibility = 1.7
+        targetCompatibility = 1.7
+
+        //Repos to use
+        repositories {
+            mavenLocal()
+            mavenCentral()
+        }
+
+        //Allows deploying to local repo
+        project.plugins.apply('maven-publish')
+
+        publishing {
+            publications {
+                mavenJava(MavenPublication) {
+
+                    groupId 'group'
+                    artifactId project.name
+                    version '1.0-SNAPSHOT'
+
+                      /*
+                       Disabling "from components.java" means that the
+                       publishMavenJavaPublicationToMavenLocal
+                       task is available on all modules but the jar
+                       is not published :(
+                     */
+
+                    from components.java
+
+                }
+            }
+        }
+
+    }
+//    //We can see that the same components are shared by domain and A
+//    task printPublishing << {
+//        println project.name + " components"
+//        project.components.findAll().each { c ->
+//            println c.name
+//        }
+//        if (project.hasProperty('publishing')) {
+//            project.publishing.publications.findAll().each { pub ->
+//                println pub
+//            }
+//        }
+//        println "done printing"
+//        println ""
+//        println ""
+//    }
+}
+

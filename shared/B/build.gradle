@@ -1,0 +1,12 @@
+
+    apply plugin: 'java'
+    dependencies {
+        /*
+            This dependency does not affect the
+            availability of the publish task
+            on shared:domain
+         */
+
+        compile project(':shared:domain')
+    }
+
