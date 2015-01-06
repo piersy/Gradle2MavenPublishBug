@@ -1,4 +1,5 @@
 
+project(":shared:B") {
     apply plugin: 'java'
     dependencies {
         /*
@@ -9,4 +10,9 @@
 
         compile project(':shared:domain')
     }
+}
 
+
+project(":shared:domain") {
+    apply plugin: 'java'
+}
